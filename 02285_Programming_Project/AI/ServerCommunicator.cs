@@ -263,7 +263,7 @@ namespace _02285_Programming_Project.AI
             List<(string, char)> agentColours = new List<(string, char)>();
 
             //string[] fileLines = System.IO.File.ReadAllLines(@"C:\Users\gustavfjorder\source\repos\02285_Programming_Project\02285_Programming_Project\Levels\MASimple.lvl");
-            string[] fileLines = System.IO.File.ReadAllLines(@"C:\Users\asger\Desktop\02285_Programming_Project-restructuring\02285_Programming_Project\Levels\comp20MA\MATheZoo.lvl");
+            string[] fileLines = System.IO.File.ReadAllLines(@"C:\Users\asger\Desktop\02285_Programming_Project-restructuring\02285_Programming_Project\Levels\comp20MA\MAdeepChaos.lvl");
 
             int index = 5;
 
