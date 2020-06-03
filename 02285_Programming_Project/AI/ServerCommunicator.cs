@@ -140,9 +140,17 @@ namespace _02285_Programming_Project.AI
             {
                 string currentColour = agentEnt.Entity.Colour;
 
+                // All states sharing a colour are assumed to be the same; i.e. the specific agent does not matter
+                var completeInitState = completeInitStatesWithH.Where(state => state.Item1.agent.Colour.Equals(currentColour)).First();
+
+                // The relative distance between an agent and a box is the same for all goals
+                var hMatrix = completeInitState.Item2.First().Item2;
+
                 var agentsOfCurrentColour = agents.Where(a => a.Entity.Colour.Equals(currentColour)).ToList();
                 int agentCount = agentsOfCurrentColour.Count;
-                if (agentCount == 1) // If there is only one agent of this colour, then they get all goals and boxes of this colour
+
+                // If there is only one agent of this colour, then they get all goals and boxes of this colour
+                if (agentCount == 1)
                 {
                    resultingInitStates.Find(initState => initState.agent.Colour.Equals(currentColour)).boxGoals 
                         = boxGoals.Where(bg => bg.Entity.Colour.Equals(currentColour)).ToList();
@@ -154,7 +162,7 @@ namespace _02285_Programming_Project.AI
                     }
                     
                     // I feel like this can be streamlined
-                    foreach (var box in boxes.Where(b => b.Entity.Colour.Equals(currentColour)))
+                    foreach (var box in boxes.Where(b => b.Entity.Colour.Equals(currentColour) && hMatrix[b.Location.x,b.Location.y] != int.MaxValue))
                     {
                         resultingInitStates.Find(initState => initState.agent.Colour.Equals(currentColour)).assignedBoxes.Add(box.Location, (Box)box.Entity);
                     } 
@@ -163,8 +171,7 @@ namespace _02285_Programming_Project.AI
                     continue;
                 }
 
-                // All states sharing a colour are assumed to be the same; i.e. the specific agent does not matter
-                var completeInitState = completeInitStatesWithH.Where(state => state.Item1.agent.Colour.Equals(currentColour)).First();
+               
 
                 // Find all box-goal actual distances
                 var goalsInState = completeInitState.Item1.boxGoals;
@@ -195,9 +202,6 @@ namespace _02285_Programming_Project.AI
                         if (goalBoxAssignmentByColour[row, col] == 1) boxGoalAssignments.Add((goalsInState[row], boxesInState[col]));
                     }
                 }
-
-                // The relative distance between an agent and a box is the same for all goals
-                var hMatrix = completeInitState.Item2.First().Item2;
 
 
                 //TODO: We should use multiple copies of each agent, to allow for assigning multiple boxes to one agent
