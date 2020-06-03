@@ -29,6 +29,7 @@ namespace _02285_Programming_Project.Entities
         }
 
         // Indicates if same team, used for assignment and nowhere else
+        #region Comparitors and hashcode
         public bool Equals(EntityLocation other)
         {
 
@@ -41,5 +42,16 @@ namespace _02285_Programming_Project.Entities
         //Check whether the products' properties are equal.
         return this.Entity.Colour.Equals(other.Entity.Colour);
         }
+
+        public override int GetHashCode()
+        {
+
+            //Get hash code for the Name field if it is not null.
+            int hashColour = Entity == null ? 0 : Entity.Colour.GetHashCode();
+
+            //Calculate the hash code for the product.
+            return hashColour;
+        }
+        #endregion
     }
 }
