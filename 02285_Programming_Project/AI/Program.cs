@@ -16,7 +16,7 @@ namespace _02285_Programming_Project.AI
 
         static void Main(string[] args)
         {
-            bool isDebug = true;
+            bool isDebug = false;
 
             if (isDebug == false)
             {
@@ -43,7 +43,8 @@ namespace _02285_Programming_Project.AI
                 var initialStates = ServerCommunicator.readLevelFromFile();
                 List<(WorldState, List<(EntityLocation, int[,], float priority)>)> hMatrix = BFSHeruistic.PrecalcH(initialStates);
                 var testCBS = new CBS(hMatrix);
-                var testSolution = testCBS.findSolution();    
+                var testSolution = testCBS.findSolution();
+                List<string> lines = ServerCommunicator.printSolutionToFile(testSolution);
                 throw new Exception("at end");
             }
 
