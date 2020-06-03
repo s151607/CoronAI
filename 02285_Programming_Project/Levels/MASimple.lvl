@@ -1,0 +1,20 @@
+#domain
+hospital
+#levelname
+MACoronAI
+#colors
+orange: 0
+cyan: 1
+#initial
++++++++
++0    +
++++ +++
++    1+
++++++++
+#goal
++++++++
++1    +
++++ +++
++    0+
++++++++
+#end

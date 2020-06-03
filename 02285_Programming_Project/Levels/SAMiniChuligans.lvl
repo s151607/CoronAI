@@ -1,0 +1,29 @@
+#domain
+hospital
+#levelname
+SAChuligans
+#colors
+blue: 0, A, B, C, D
+#initial
++++
++ +
++ +
++ +
++ ++++++
++ +D A +
++ +C   +
++   0  +
++      +
+++++++++
+#goal
++++
++D+
++C+
++ + 
++A++++++
++ +    +
++ +    +
++      +
++      +
+++++++++
+#end

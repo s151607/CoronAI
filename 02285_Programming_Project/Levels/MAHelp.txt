@@ -1,0 +1,18 @@
+#domain
+hospital
+#levelname
+MAGLaDOS
+#colors
+red: 0, A, C
+green: 1, B
+#initial
+++++++++++
++CA    BC+
++0C    C1+
+++++++++++
+#goal
+++++++++++
++        +
++A      B+
+++++++++++
+#end

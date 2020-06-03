@@ -1,0 +1,433 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="MAAiAiCap" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Levels\comp18\MAAiAiCap.lvl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="MAAIFather" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Levels\comp18\MAAIFather.lvl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="MAAiMasTers" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Levels\comp18\MAAiMasTers.lvl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="MAAIoliMAsh" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Levels\comp17\MAAIoliMAsh.lvl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="MAAIoliMAsh1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Levels\comp17\MAAIoliMAsh.lvl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="MAAlphaOne" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Levels\comp18\MAAlphaOne.lvl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="MAAntsStar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Levels\comp18\MAAntsStar.lvl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="MABahaMAS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Levels\comp18\MABahaMAS.lvl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="MAbAnAnA" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Levels\comp18\MAbAnAnA.lvl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="MABeliebers" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Levels\comp17\MABeliebers.lvl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="MABeTrayEd" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Levels\comp18\MABeTrayEd.lvl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="MABlinky" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Levels\comp17\MABlinky.lvl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="MAbongu" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Levels\comp18\MAbongu.lvl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="MABoxBunny" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Levels\comp17\MABoxBunny.lvl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="MABronies" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Levels\comp17\MABronies.lvl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="MAByteMe" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Levels\comp18\MAByteMe.lvl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="MACybot" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Levels\comp18\MACybot.lvl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="MAdashen" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Levels\comp18\MAdashen.lvl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="MADAT" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Levels\comp17\MADAT.lvl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="MADaVinci" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Levels\comp18\MADaVinci.lvl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="MADoDo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Levels\comp17\MADoDo.lvl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="MAEasyPeasy" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Levels\comp18\MAEasyPeasy.lvl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="MAEvilCorp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Levels\comp17\MAEvilCorp.lvl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="MAFooBar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Levels\comp17\MAFooBar.lvl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="MAGeneralAI" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Levels\comp17\MAGeneralAI.lvl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="MAGreenDots" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Levels\comp18\MAGreenDots.lvl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="MAgroupname" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Levels\comp17\MAgroupname.lvl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="MAGroupOne" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Levels\comp17\MAGroupOne.lvl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="MAHALnineK" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Levels\comp17\MAHALnineK.lvl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="MAHiveMind" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Levels\comp17\MAHiveMind.lvl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="MAIamGreedy" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Levels\comp17\MAIamGreedy.lvl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="MAJMAI" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Levels\comp18\MAJMAI.lvl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="MAJomarki" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Levels\comp17\MAJomarki.lvl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="MAKaldi" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Levels\comp18\MAKaldi.lvl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="MAKalle" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Levels\comp17\MAKalle.lvl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="MAKarlMarx" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Levels\comp18\MAKarlMarx.lvl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="MAKJFWAOL" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Levels\comp18\MAKJFWAOL.lvl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="MALemmings" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Levels\comp17\MALemmings.lvl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="MALiquorice" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Levels\comp17\MALiquorice.lvl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="MALobot" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Levels\comp18\MALobot.lvl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="MAMagicians" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Levels\comp18\MAMagicians.lvl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="MAMasAiArne" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Levels\comp17\MAMasAiArne.lvl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="MAMASters" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Levels\comp17\MAMASters.lvl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="MANavy" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Levels\comp18\MANavy.lvl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="MANeverMind" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Levels\comp17\MANeverMind.lvl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="MANikrima" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Levels\comp18\MANikrima.lvl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="MANotHard" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Levels\comp18\MANotHard.lvl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="MAOmnics" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Levels\comp17\MAOmnics.lvl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="MAora" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Levels\comp18\MAora.lvl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="MAPushPush" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Levels\comp18\MAPushPush.lvl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="MATALK" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Levels\comp17\MATALK.lvl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="MAtnrbts" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Levels\comp17\MAtnrbts.lvl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="MAZEROagent" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Levels\comp18\MAZEROagent.lvl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SAAiAiCap" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Levels\comp18\SAAiAiCap.lvl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SAAIFather" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Levels\comp18\SAAIFather.lvl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SAAiMasTers" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Levels\comp18\SAAiMasTers.lvl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SAAIoliMAsh" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Levels\comp17\SAAIoliMAsh.lvl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SAAlphaOne" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Levels\comp18\SAAlphaOne.lvl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SAAntsStar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Levels\comp18\SAAntsStar.lvl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SABahaMAS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Levels\comp18\SABahaMAS.lvl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SAbAnAnA" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Levels\comp18\SAbAnAnA.lvl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SABeliebers" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Levels\comp17\SABeliebers.lvl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SABeTrayEd" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Levels\comp18\SABeTrayEd.lvl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SABlinky" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Levels\comp17\SABlinky.lvl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SAbongu" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Levels\comp18\SAbongu.lvl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SABoxBunny" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Levels\comp17\SABoxBunny.lvl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SABronies" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Levels\comp17\SABronies.lvl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SAByteMe" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Levels\comp18\SAByteMe.lvl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SACybot" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Levels\comp18\SACybot.lvl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SAdashen" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Levels\comp18\SAdashen.lvl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SADAT" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Levels\comp17\SADAT.lvl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SADaVinci" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Levels\comp18\SADaVinci.lvl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SADoDo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Levels\comp17\SADoDo.lvl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SAEasyPeasy" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Levels\comp18\SAEasyPeasy.lvl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SAEvilCorp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Levels\comp17\SAEvilCorp.lvl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SAFooBar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Levels\comp17\SAFooBar.lvl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SAGeneralAI" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Levels\comp17\SAGeneralAI.lvl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SAGreenDots" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Levels\comp18\SAGreenDots.lvl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SAgroupname" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Levels\comp17\SAgroupname.lvl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SAGroupOne" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Levels\comp17\SAGroupOne.lvl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SAHALnineK" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Levels\comp17\SAHALnineK.lvl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SAHiveMind" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Levels\comp17\SAHiveMind.lvl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SAIamGreedy" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Levels\comp17\SAIamGreedy.lvl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SAJMAI" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Levels\comp18\SAJMAI.lvl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SAJomarki" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Levels\comp17\SAJomarki.lvl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SAKaldi" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Levels\comp18\SAKaldi.lvl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SAKalle" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Levels\comp17\SAKalle.lvl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SAKarlMarx" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Levels\comp18\SAKarlMarx.lvl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SAKJFWAOL" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Levels\comp18\SAKJFWAOL.lvl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SALemmings" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Levels\comp17\SALemmings.lvl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SALiquorice" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Levels\comp17\SALiquorice.lvl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SALobot" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Levels\comp18\SALobot.lvl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SAMagicians" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Levels\comp18\SAMagicians.lvl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SAMasAiArne" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Levels\comp17\SAMasAiArne.lvl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SAMASters" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Levels\comp17\SAMASters.lvl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SANavy" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Levels\comp18\SANavy.lvl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SANeverMind" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Levels\comp17\SANeverMind.lvl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SANotHard" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Levels\comp18\SANotHard.lvl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SAOmnics" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Levels\comp17\SAOmnics.lvl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SAora" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Levels\comp18\SAora.lvl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SAPushPush" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Levels\comp18\SAPushPush.lvl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SATALK" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Levels\comp17\SATALK.lvl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SAtnrbts" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Levels\comp17\SAtnrbts.lvl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SAZEROagent" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Levels\comp18\SAZEROagent.lvl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+</root>
