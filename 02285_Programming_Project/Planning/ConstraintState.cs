@@ -111,13 +111,8 @@ namespace _02285_Programming_Project.Planning
                             {
                                 return FindMatchingConflicts(currentTime, outerBoxLocation);
                             }
-                            
-                            if (innerStateOld.agentLocation.Equals(outerBoxLocation))
-                            {
-                                return FindMatchingConflicts(currentTime, outerBoxLocation);
-                            }
-                            
-                            if (innerStateNow.assignedBoxes.ContainsKey(outerBoxLocation))
+
+                            if(innerStateNow.assignedBoxes.ContainsKey(outerBoxLocation))
                             {
                                 return FindMatchingConflicts(currentTime, outerBoxLocation);
                             }
