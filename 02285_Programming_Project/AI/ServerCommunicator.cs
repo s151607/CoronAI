@@ -273,7 +273,6 @@ namespace _02285_Programming_Project.AI
                         resultingInitStates.Find(ws => ws.agent.Name.Equals(agentBoxPair.agent.Entity.Name)).agentGoal
                         = agentBoxPair.agent.Location;
                     }
-
                     
                     foreach (var box in agentBoxPair.boxes)
                     {
