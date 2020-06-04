@@ -16,7 +16,7 @@ namespace _02285_Programming_Project.AI
 
         static void Main(string[] args)
         {
-            bool isDebug = true;
+            bool isDebug = false;
 
             if (isDebug == false)
             {
