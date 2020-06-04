@@ -157,14 +157,32 @@ namespace _02285_Programming_Project.AI
                 // All states sharing a colour are assumed to be the same; i.e. the specific agent does not matter
                 var completeInitState = boxGoalDummiesWithH.Where(state => state.Item1.agent.Colour.Equals(currentColour)).First();
 
-                // The relative distance between an agent and a box is the same for all goals
-                var hMatrixBoxGoal = completeInitState.Item2.First().Item2;
-
                 var agentsOfCurrentColour = agents.Where(a => a.Entity.Colour.Equals(currentColour)).ToList();
                 int agentCount = agentsOfCurrentColour.Count;
 
                 var goalsInState = boxGoals.Where(goal => goal.Entity.Colour.Equals(currentColour)).ToList();
                 var boxesInState = boxes.Where(box => box.Entity.Colour.Equals(currentColour)).ToList();
+
+                // The relative distance between an agent and a box is the same for all goals
+                if (completeInitState.Item2.Count == 0)
+                {
+                    if (agentGoals.Any(ag => ag.Entity.Name.Equals(agentsOfCurrentColour.First().Entity.Name)))
+                    {
+                        resultingInitStates.Find(ws => ws.agent.Name.Equals(agentsOfCurrentColour.First().Entity.Name)).agentGoal
+                        = agentsOfCurrentColour.First().Location;
+                    }
+
+                    // I feel like this can be streamlined
+                    foreach (var box in boxesInState)
+                    {
+                        resultingInitStates.Find(initState => initState.agent.Colour.Equals(currentColour)).assignedBoxes.Add(box.Location, (Box)box.Entity);
+                    }
+
+                    // Go to next agent colouring
+                    continue;
+
+                }
+                var hMatrixBoxGoal = completeInitState.Item2.First().Item2;
 
                 int boxCount = boxesInState.Count;
 
