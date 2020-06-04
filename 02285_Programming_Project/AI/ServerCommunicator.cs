@@ -164,8 +164,7 @@ namespace _02285_Programming_Project.AI
                 int agentCount = agentsOfCurrentColour.Count;
 
                 var goalsInState = boxGoals.Where(goal => goal.Entity.Colour.Equals(currentColour)).ToList();
-                var boxesInState = boxes.Where(box => box.Entity.Colour.Equals(currentColour)
-                                        && hMatrixBoxGoal[box.Location.x, box.Location.y] != int.MaxValue).ToList();
+                var boxesInState = boxes.Where(box => box.Entity.Colour.Equals(currentColour)).ToList();
 
                 int boxCount = boxesInState.Count;
 
@@ -196,8 +195,11 @@ namespace _02285_Programming_Project.AI
                 int i = 0; int j = 0;
                 foreach (var T2 in completeInitState.Item2) // Equivalent to "For every goal..."
                 {
-                    foreach (var box in boxesInState)
+                    foreach (var box in boxes.Where(box => box.Entity.Colour.Equals(currentColour)
+                                        && T2.Item2[box.Location.x, box.Location.y] != int.MaxValue))
                     {
+                        int len = boxes.Where(box => box.Entity.Colour.Equals(currentColour)
+                        && T2.Item2[box.Location.x, box.Location.y] != int.MaxValue).ToList().Count;
                         goalBoxDistances[i, j] = T2.Item2[box.Location.x, box.Location.y];
                         j++;
                     }
@@ -206,16 +208,13 @@ namespace _02285_Programming_Project.AI
                 }
 
                 // Calculate optimal box-goal assignments
-                var goalBoxAssignmentByColour = HungarianBipartiteMatching.SolveMinAssignment(goalBoxDistances);
+                var goalBoxAssignmentByColour = HungarianAlgorithm.FindAssignments(goalBoxDistances);
 
                 // Translate these into box-goal pairings
                 List<(EntityLocation goal, EntityLocation box)> boxGoalAssignments = new List<(EntityLocation, EntityLocation)>();
-                for (int row = 0; row < goalsInState.Count; row++)
+                for (int assignment = 0; assignment < goalsInState.Count; assignment++)
                 {
-                    for (int col = 0; col < boxCount; col++)
-                    {
-                        if (goalBoxAssignmentByColour[row, col] == 1) boxGoalAssignments.Add((goalsInState[row], boxesInState[col]));
-                    }
+                    boxGoalAssignments.Add((goalsInState[assignment], boxesInState[goalBoxAssignmentByColour[assignment]]));
                 }
 
 
@@ -225,19 +224,20 @@ namespace _02285_Programming_Project.AI
                 int[,] agentBoxDistances = new int[ass2Size, ass2Size];
                 i = 0;
                 // For every box, perform an agent-box assignment, to get boxCount dummy agents
-                for (int a = 0; a < boxCount; a++) // Divsion in C# always rounds down, +1 rounds up
+
+                // Get relative agent-box distances via BFS
+                for (int age = 0; age < agentCount; age++)
                 {
-                    // Get relative agent-box distances via BFS
-                    foreach (var T in agentBoxDummiesWithH)
+                    foreach (var T in agentBoxDummiesWithH.Where(abd => abd.Item1.agent.Colour.Equals(currentColour)))
                     {
 
                         // Not complete, but based on perfect assignments!!!
                         foreach (var box in boxesInState)
                         {
-                             agentBoxDistances[i, j] = Math.Abs(
-                             T.Item2.First().Item2[T.Item1.agentLocation.x, T.Item1.agentLocation.y]
-                             - T.Item2.First().Item2[box.Location.x, box.Location.y]);
-                           j++;
+                            agentBoxDistances[i, j] = Math.Abs(
+                            T.Item2.First().Item2[T.Item1.agentLocation.x, T.Item1.agentLocation.y]
+                            - T.Item2.First().Item2[box.Location.x, box.Location.y]);
+                            j++;
                         }
                         i++;
                         j = 0;
@@ -245,31 +245,23 @@ namespace _02285_Programming_Project.AI
                 }
 
                 // Calculate optimal box-goal assignments
-                var agentBoxAssignmentByColour = HungarianBipartiteMatching.SolveMinAssignment(agentBoxDistances);
+                var agentBoxAssignmentByColour = HungarianAlgorithm.FindAssignments(agentBoxDistances);
 
                 // Translate these into agent-box pairings
                 List<(EntityLocation agent, List<EntityLocation> boxes)> agentBoxAssignments = new List<(EntityLocation, List<EntityLocation>)>();
                 for (int a = 0; a < agentCount; a++) agentBoxAssignments.Add((agentsOfCurrentColour[a], new List<EntityLocation>()));
-                for (int row = 0; row < agentCount * boxCount; row++)
+
+                for (int assignment = agentBoxAssignmentByColour.Length-1; assignment > agentBoxAssignmentByColour.Length-1 - agentCount; assignment--)
                 {
-                    //TODO: If we are to use multiple agent copies for assigning multiple boxes to one agent, we should combine agent 0, agent 0', ..., into one agent.
-                    for (int col = 0; col < boxCount; col++)
-                    {
-                        if (agentBoxAssignmentByColour[row, col] == 1)
-                        {
-                            agentBoxAssignments[row % agentCount].boxes.Add(boxesInState[col]);
-                        }
-                    }
+                    var box = boxesInState[agentBoxAssignmentByColour[assignment] % boxCount];
+                    var agentBoxPair = agentBoxAssignments[assignment % agentCount];
+                    agentBoxPair.boxes.Add(box);
                 }
 
                 // Fill initial states
                 //TODO: Multiple goals and boxes can be added!
                 foreach (var agentBoxPair in agentBoxAssignments)
                 {
-                    // Add all optimal goals
-                    resultingInitStates.Find(ws => ws.agent.Name.Equals(agentBoxPair.agent.Entity.Name)).boxGoals
-                        .AddRange(agentBoxPair.boxes);
-
                     // Add agent goal if it exists
                     if (agentGoals.Any(ag => ag.Entity.Name.Equals(agentBoxPair.agent.Entity.Name)))
                     {
@@ -277,9 +269,14 @@ namespace _02285_Programming_Project.AI
                         = agentBoxPair.agent.Location;
                     }
 
-                    // Add all boxes
+                    
                     foreach (var box in agentBoxPair.boxes)
                     {
+                        // Add all optimal goals
+                        resultingInitStates.Find(ws => ws.agent.Name.Equals(agentBoxPair.agent.Entity.Name)).boxGoals
+                            .Add(boxGoalAssignments.Find(bg => bg.box.Location.Equals(box.Location)).goal);
+
+                        // Add all boxes
                         resultingInitStates.Find(ws => ws.agent.Name.Equals(agentBoxPair.agent.Entity.Name)).assignedBoxes
                         .Add(box.Location,
                         (Box)box.Entity);
@@ -302,7 +299,7 @@ namespace _02285_Programming_Project.AI
 
             //string[] fileLines = System.IO.File.ReadAllLines(@"C:\Users\gustavfjorder\source\repos\02285_Programming_Project\02285_Programming_Project\Levels\MASimple.lvl");
             //string[] fileLines = System.IO.File.ReadAllLines(@"C:\Users\asger\Desktop\02285_Programming_Project-restructuring\02285_Programming_Project\Levels\comp20MA\MATheZoo.lvl");
-            string[] fileLines = System.IO.File.ReadAllLines(@"C:\Users\Count\Downloads\complevels\levels\test.lvl");
+            string[] fileLines = System.IO.File.ReadAllLines(@"C:\Users\Count\source\repos\CoronAI\02285_Programming_Project\Levels\Comp20\MACoronAI.lvl");
 
             int index = 5;
 
