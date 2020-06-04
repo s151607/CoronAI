@@ -95,6 +95,19 @@ namespace _02285_Programming_Project.Planning
                 // Subtract from 
                 for (int col = 0; col < ncol; col++) C[row, col] -= minInRow;
             }
+
+            int minInCol;
+            for (int col = 0; col < ncol; col++)
+            {
+                // Find smallest value in col
+                minInCol = C[0, col];
+                for (int row = 0; row < nrow; row++)
+                {
+                    if (C[row, col] < minInCol) minInCol = C[row, col];
+                }
+                // Subtract from 
+                for (int row = 0; row < nrow; row++) C[row, col] -= minInCol;
+            }
             step = 2;
         }
         private static void StepTwo()

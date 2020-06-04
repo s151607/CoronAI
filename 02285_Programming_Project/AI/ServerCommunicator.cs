@@ -91,7 +91,6 @@ namespace _02285_Programming_Project.AI
             return initialStates;
 
         }
-
         private static List<WorldState> AssignBoxesToAgents(List<EntityLocation> agents, List<EntityLocation> boxes, List<EntityLocation> agentGoals, List<EntityLocation> boxGoals, HashSet<Location> walls)
         {
             List<WorldState> initialStates = new List<WorldState>();
@@ -112,8 +111,23 @@ namespace _02285_Programming_Project.AI
                 resultingInitStates.Add(completeInitState);
             }
 
-            // Calculate BFS with heuristic for every agent colour
-            List<WorldState> completeInitStates = new List<WorldState>();
+            // Prepare agent-box dummies
+            List<WorldState> agentBoxDummies = new List<WorldState>();
+            foreach (EntityLocation agentEntity in agents)
+            {
+                WorldState completeInitState = new WorldState();
+                completeInitState.agent = (Agent)agentEntity.Entity;
+                completeInitState.agentLocation = agentEntity.Location;
+                completeInitState.Walls = walls;
+                completeInitState.assignedBoxes = new Dictionary<Location, Box>();
+                completeInitState.boxGoals = new List<EntityLocation>();
+                completeInitState.boxGoals.Add(new EntityLocation(agentEntity.Entity, agentEntity.Location));
+                agentBoxDummies.Add(completeInitState);
+            }
+            List<(WorldState, List<(EntityLocation, int[,], float priority)>)> agentBoxDummiesWithH = BFSHeruistic.PrecalcH(agentBoxDummies);
+
+            // Prepare goal-box dummies
+            List<WorldState> boxGoalDummies = new List<WorldState>();
             foreach (EntityLocation agentEntity in agents.Distinct())
             {
                 WorldState completeInitState = new WorldState();
@@ -128,12 +142,12 @@ namespace _02285_Programming_Project.AI
                 completeInitState.boxGoals = new List<EntityLocation>();
                 foreach (EntityLocation boxGoal in boxGoals.Where(boxG => boxG.Entity.Colour.Equals(completeInitState.agent.Colour)))
                 {
-                    completeInitState.boxGoals.Add(new EntityLocation(boxGoal.Entity, completeInitState.agentLocation));
+                    completeInitState.boxGoals.Add(new EntityLocation(boxGoal.Entity, boxGoal.Location));
                 }
                 //completeInitState.boxGoals.Add(new EntityLocation(completeInitState.agent, completeInitState.agentLocation));
-                completeInitStates.Add(completeInitState);
+                boxGoalDummies.Add(completeInitState);
             }
-            List<(WorldState, List<(EntityLocation, int[,], float priority)>)> completeInitStatesWithH = BFSHeruistic.PrecalcH(completeInitStates);
+            List<(WorldState, List<(EntityLocation, int[,], float priority)>)> boxGoalDummiesWithH = BFSHeruistic.PrecalcH(boxGoalDummies);
 
             // For each colour of agent
             foreach (EntityLocation agentEnt in agents.Distinct())
@@ -141,42 +155,43 @@ namespace _02285_Programming_Project.AI
                 string currentColour = agentEnt.Entity.Colour;
 
                 // All states sharing a colour are assumed to be the same; i.e. the specific agent does not matter
-                var completeInitState = completeInitStatesWithH.Where(state => state.Item1.agent.Colour.Equals(currentColour)).First();
+                var completeInitState = boxGoalDummiesWithH.Where(state => state.Item1.agent.Colour.Equals(currentColour)).First();
 
                 // The relative distance between an agent and a box is the same for all goals
-                var hMatrix = completeInitState.Item2.First().Item2;
+                var hMatrixBoxGoal = completeInitState.Item2.First().Item2;
 
                 var agentsOfCurrentColour = agents.Where(a => a.Entity.Colour.Equals(currentColour)).ToList();
                 int agentCount = agentsOfCurrentColour.Count;
 
+                var goalsInState = boxGoals.Where(goal => goal.Entity.Colour.Equals(currentColour)).ToList();
+                var boxesInState = boxes.Where(box => box.Entity.Colour.Equals(currentColour)
+                                        && hMatrixBoxGoal[box.Location.x, box.Location.y] != int.MaxValue).ToList();
+
+                int boxCount = boxesInState.Count;
+
                 // If there is only one agent of this colour, then they get all goals and boxes of this colour
                 if (agentCount == 1)
                 {
-                   resultingInitStates.Find(initState => initState.agent.Colour.Equals(currentColour)).boxGoals 
-                        = boxGoals.Where(bg => bg.Entity.Colour.Equals(currentColour)).ToList();
+                    resultingInitStates.Find(initState => initState.agent.Colour.Equals(currentColour)).boxGoals
+                         = goalsInState;
 
                     if (agentGoals.Any(ag => ag.Entity.Name.Equals(agentsOfCurrentColour.First().Entity.Name)))
                     {
                         resultingInitStates.Find(ws => ws.agent.Name.Equals(agentsOfCurrentColour.First().Entity.Name)).agentGoal
                         = agentsOfCurrentColour.First().Location;
                     }
-                    
+
                     // I feel like this can be streamlined
-                    foreach (var box in boxes.Where(b => b.Entity.Colour.Equals(currentColour) && hMatrix[b.Location.x,b.Location.y] != int.MaxValue))
+                    foreach (var box in boxesInState)
                     {
                         resultingInitStates.Find(initState => initState.agent.Colour.Equals(currentColour)).assignedBoxes.Add(box.Location, (Box)box.Entity);
-                    } 
+                    }
 
                     // Go to next agent colouring
                     continue;
                 }
 
-               
-
                 // Find all box-goal actual distances
-                var goalsInState = completeInitState.Item1.boxGoals;
-                var boxesInState = boxes.Where(box => box.Entity.Colour.Equals(currentColour)).ToList();
-                int boxCount = boxesInState.Count;
                 int[,] goalBoxDistances = new int[boxCount, boxCount];
                 int i = 0; int j = 0;
                 foreach (var T2 in completeInitState.Item2) // Equivalent to "For every goal..."
@@ -205,35 +220,45 @@ namespace _02285_Programming_Project.AI
 
 
                 //TODO: We should use multiple copies of each agent, to allow for assigning multiple boxes to one agent
-                int ass2Size = agentCount >= boxCount ? agentCount : boxCount;
+                int ass2Size = agentCount * boxCount; // >= boxCount ? agentCount : boxCount;
 
                 int[,] agentBoxDistances = new int[ass2Size, ass2Size];
                 i = 0;
-                foreach (var agentE in agentsOfCurrentColour)
+                // For every box, perform an agent-box assignment, to get boxCount dummy agents
+                for (int a = 0; a < boxCount; a++) // Divsion in C# always rounds down, +1 rounds up
                 {
-                    // Not complete, but based on perfect assignments!!!
-                    foreach (var box in boxesInState)
+                    // Get relative agent-box distances via BFS
+                    foreach (var T in agentBoxDummiesWithH)
                     {
-                        agentBoxDistances[i, j] = Math.Abs(
-                            hMatrix[agentE.Location.x, agentE.Location.y]
-                            - hMatrix[box.Location.x, box.Location.y]);
-                        j++;
+
+                        // Not complete, but based on perfect assignments!!!
+                        foreach (var box in boxesInState)
+                        {
+                             agentBoxDistances[i, j] = Math.Abs(
+                             T.Item2.First().Item2[T.Item1.agentLocation.x, T.Item1.agentLocation.y]
+                             - T.Item2.First().Item2[box.Location.x, box.Location.y]);
+                           j++;
+                        }
+                        i++;
+                        j = 0;
                     }
-                    i++;
-                    j = 0;
                 }
 
                 // Calculate optimal box-goal assignments
                 var agentBoxAssignmentByColour = HungarianBipartiteMatching.SolveMinAssignment(agentBoxDistances);
 
                 // Translate these into agent-box pairings
-                List<(EntityLocation agent, EntityLocation box)> agentBoxAssignments = new List<(EntityLocation, EntityLocation)>();
-                for (int row = 0; row < agentCount; row++)
+                List<(EntityLocation agent, List<EntityLocation> boxes)> agentBoxAssignments = new List<(EntityLocation, List<EntityLocation>)>();
+                for (int a = 0; a < agentCount; a++) agentBoxAssignments.Add((agentsOfCurrentColour[a], new List<EntityLocation>()));
+                for (int row = 0; row < agentCount * boxCount; row++)
                 {
                     //TODO: If we are to use multiple agent copies for assigning multiple boxes to one agent, we should combine agent 0, agent 0', ..., into one agent.
                     for (int col = 0; col < boxCount; col++)
                     {
-                        if (agentBoxAssignmentByColour[row, col] == 1) agentBoxAssignments.Add((agentsOfCurrentColour[row], boxesInState[col]));
+                        if (agentBoxAssignmentByColour[row, col] == 1)
+                        {
+                            agentBoxAssignments[row % agentCount].boxes.Add(boxesInState[col]);
+                        }
                     }
                 }
 
@@ -241,19 +266,24 @@ namespace _02285_Programming_Project.AI
                 //TODO: Multiple goals and boxes can be added!
                 foreach (var agentBoxPair in agentBoxAssignments)
                 {
+                    // Add all optimal goals
                     resultingInitStates.Find(ws => ws.agent.Name.Equals(agentBoxPair.agent.Entity.Name)).boxGoals
-                        .Add(boxGoalAssignments.Find(pair => pair.box.Location.Equals(agentBoxPair.box.Location)).goal);
+                        .AddRange(agentBoxPair.boxes);
 
-                    if(agentGoals.Any(ag => ag.Entity.Name.Equals(agentBoxPair.agent.Entity.Name)))
+                    // Add agent goal if it exists
+                    if (agentGoals.Any(ag => ag.Entity.Name.Equals(agentBoxPair.agent.Entity.Name)))
                     {
                         resultingInitStates.Find(ws => ws.agent.Name.Equals(agentBoxPair.agent.Entity.Name)).agentGoal
                         = agentBoxPair.agent.Location;
                     }
 
-                    resultingInitStates.Find(ws => ws.agent.Name.Equals(agentBoxPair.agent.Entity.Name)).assignedBoxes
-                        .Add(agentBoxPair.box.Location,
-                        (Box)agentBoxPair.box.Entity);
-
+                    // Add all boxes
+                    foreach (var box in agentBoxPair.boxes)
+                    {
+                        resultingInitStates.Find(ws => ws.agent.Name.Equals(agentBoxPair.agent.Entity.Name)).assignedBoxes
+                        .Add(box.Location,
+                        (Box)box.Entity);
+                    }
                 }
             }
             return resultingInitStates;
@@ -272,7 +302,7 @@ namespace _02285_Programming_Project.AI
 
             //string[] fileLines = System.IO.File.ReadAllLines(@"C:\Users\gustavfjorder\source\repos\02285_Programming_Project\02285_Programming_Project\Levels\MASimple.lvl");
             //string[] fileLines = System.IO.File.ReadAllLines(@"C:\Users\asger\Desktop\02285_Programming_Project-restructuring\02285_Programming_Project\Levels\comp20MA\MATheZoo.lvl");
-            string[] fileLines = System.IO.File.ReadAllLines(@"C:\Users\Count\Downloads\complevels\levels\MAChuligans.lvl");
+            string[] fileLines = System.IO.File.ReadAllLines(@"C:\Users\Count\Downloads\complevels\levels\test.lvl");
 
             int index = 5;
 
