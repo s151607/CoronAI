@@ -226,7 +226,7 @@ namespace _02285_Programming_Project.AI
                 // For every box, perform an agent-box assignment, to get boxCount dummy agents
 
                 // Get relative agent-box distances via BFS
-                for (int age = 0; age < agentCount; age++)
+                for (int age = 0; age < ((agentCount >= boxCount) ? agentCount : boxCount); age++)
                 {
                     foreach (var T in agentBoxDummiesWithH.Where(abd => abd.Item1.agent.Colour.Equals(currentColour)))
                     {
@@ -251,9 +251,14 @@ namespace _02285_Programming_Project.AI
                 List<(EntityLocation agent, List<EntityLocation> boxes)> agentBoxAssignments = new List<(EntityLocation, List<EntityLocation>)>();
                 for (int a = 0; a < agentCount; a++) agentBoxAssignments.Add((agentsOfCurrentColour[a], new List<EntityLocation>()));
 
-                for (int assignment = agentBoxAssignmentByColour.Length-1; assignment > agentBoxAssignmentByColour.Length-1 - agentCount; assignment--)
+                for (int assignment = 0; assignment < agentBoxAssignmentByColour.Length; assignment++) // Ignore dummy agents
                 {
-                    var box = boxesInState[agentBoxAssignmentByColour[assignment] % boxCount];
+                    int boxCol = agentBoxAssignmentByColour[assignment];
+                    if (boxCol >= boxesInState.Count) // If box is a dummy
+                    {
+                        continue;
+                    }
+                    var box = boxesInState[agentBoxAssignmentByColour[assignment]];
                     var agentBoxPair = agentBoxAssignments[assignment % agentCount];
                     agentBoxPair.boxes.Add(box);
                 }
@@ -299,7 +304,7 @@ namespace _02285_Programming_Project.AI
 
             //string[] fileLines = System.IO.File.ReadAllLines(@"C:\Users\gustavfjorder\source\repos\02285_Programming_Project\02285_Programming_Project\Levels\MASimple.lvl");
             //string[] fileLines = System.IO.File.ReadAllLines(@"C:\Users\asger\Desktop\02285_Programming_Project-restructuring\02285_Programming_Project\Levels\comp20MA\MATheZoo.lvl");
-            string[] fileLines = System.IO.File.ReadAllLines(@"C:\Users\Count\source\repos\CoronAI\02285_Programming_Project\Levels\Comp20\MACoronAI.lvl");
+            string[] fileLines = System.IO.File.ReadAllLines(@"C:\Users\Count\Downloads\complevels\levels\test.lvl");
 
             int index = 5;
 
